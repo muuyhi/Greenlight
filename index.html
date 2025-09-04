@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Green Light - Sebrae</title>
+
+  <!--  fonte  -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+ /*    cor site  */
+    :root{
+      --green-900: #0b3b1a;
+      --green-800: #2e7d32;
+      --green-700: #388e3c;
+      --green-100: #e6f7e6;
+      --bg: #f4fff4;
+      --muted: #2b6b2f;
+      --white: #ffffff;
+      --radius: 12px;
+      --maxw: 1200px;
+      --ff: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff);
+      background:var(--bg);
+      color:#0b2b17;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    .container{
+      max-width:var(--maxw);
+      margin: auto;
+      padding:0 24px;
+    }
+
+    /* topo */
+    header.site-header{
+      background: linear-gradient(180deg, rgba(46,125,50,1) 0%, rgba(46,125,50,0.95) 100%);
+      color:var(--white);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 24px;
+      max-width:var(--maxw);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    nav.main-nav a{
+      color:var(--white);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:8px;
+      font-size:14px;
+    }
+    nav.main-nav a:hover{
+      background: rgba(255,255,255,0.06);
+    }
+    .header-cta{
+      background:var(--white);
+      color:var(--green-800);
+      padding:9px 14px;border-radius:8px;font-weight:700;
+      box-shadow:0 6px 18px rgba(4,12,6,0.12);
+      text-decoration:none;
+    }
+
+    /* fundo escuro c imagem e overlay */
+    .hero{
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72vh;
+      color:var(--white);
+      margin-bottom:28px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background-image: url('https://i.imgur.com/p4eqsfW.jpeg'); 
+      background-size:cover;background-position:center;
+      filter: brightness(0.55) saturate(0.85);
+      z-index:0;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(11,59,26,0.65) 0%, rgba(46,125,50,0.45) 100%);
+      z-index:1;
+    }
+    .hero-inner{
+      position:relative; z-index:2;
+      text-align:center;
+      padding:48px 20px;
+      width:100%;
+      max-width:1100px;
+    }
+    .hero-title{
+      font-size:64px;
+      line-height:0.95;
+      margin:0 0 10px;
+      font-weight:800;
+      letter-spacing:-1px;
+      text-shadow: 0 8px 30px rgba(2,6,3,0.45);
+    }
+    .hero-sub{
+      font-size:18px;
+      margin:8px 0 22px;
+      color: rgba(255,255,255,0.9);
+      max-width:760px;
+      margin-left:auto;margin-right:auto;
+      font-weight:500;
+    }
+
+    .hero-ctas{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      margin-top:22px;
+    }
+    .btn{
+      border:0;cursor:pointer;border-radius:10px;padding:12px 18px;font-weight:700;
+      font-size:14px;
+      box-shadow: 0 8px 20px rgba(2,6,3,0.18);
+    }
+    .btn-primary{
+      background:var(--white);color:var(--green-800);
+    }
+    .btn-ghost{
+      background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.12);
+    }
+
+
+    .feature-bar{
+      display:inline-flex;
+      gap:8px;
+      padding:10px;
+      margin-top:28px;
+      background: rgba(0,0,0,0.35);
+      border-radius:40px;
+      box-shadow: 0 6px 18px rgba(2,6,3,0.25);
+    }
+    .feature-bar span{
+      padding:8px 12px;border-radius:28px;background:rgba(255,255,255,0.04);font-weight:600;color:rgba(255,255,255,0.95);font-size:13px;
+    }
+
+
+    main{background:transparent}
+    .section{padding:64px 0}
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:36px;
+      align-items:center;
+    }
+
+    .about {
+      background:linear-gradient(180deg,var(--bg), #f0fff0); 
+      border-radius:14px;
+      padding:32px;
+      box-shadow: 0 10px 30px rgba(7,22,10,0.06);
+    }
+    .about h2{color:var(--green-700);font-size:28px;margin-top:0}
+    .about p{color:#16421a}
+
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+    .card{
+      background:var(--green-100);
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow: 0 8px 24px rgba(6,38,18,0.06);
+    }
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+    }
+    .card .card-body{ padding:16px; text-align:left }
+    .card .card-body h3{ margin:0 0 8px; color:var(--muted); font-size:18px }
+    .card .card-body p{ margin:0;color:#284b2b;font-size:14px;line-height:1.5 }
+
+    /* feira */
+    .feira-card{
+      background: linear-gradient(180deg, rgba(14,58,21,0.98), rgba(33,97,36,0.94));
+      color:var(--white);
+      padding:28px;border-radius:14px;
+      box-shadow: 0 12px 30px rgba(4,18,8,0.25);
+    }
+    .feira-card h3{ margin:0 0 12px;font-size:22px }
+    .feira-meta{ display:flex; gap:18px; align-items:center; flex-wrap:wrap }
+    .feira-meta .pill{ background:rgba(255,255,255,0.08); padding:10px 14px;border-radius:10px; font-weight:700 }
+
+    /* footer */
+    footer{
+      background:var(--green-800);
+      color:var(--white);
+      padding:28px 0;margin-top:36px;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- topo -->
+<header class="site-header" role="banner">
+  <div class="topbar container">
+    <div class="brand">
+      <img src="https://i.imgur.com/6VSN3lb.png" alt="logo" style="height:70px;">
+      <div>
+        <h1 style="font-size:15px;margin:0">Green Light</h1>
+        <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:4px">Sebrae — Projeto </div>
+      </div>
+    </div>
+
+    <nav class="main-nav" role="navigation" aria-label="menu principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#feira">Feira</a>
+    </nav>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero" aria-label="Apresentação">
+  <div class="hero-inner container">
+    <h2 class="hero-title"> Projetos sustentáveis com plantas</h2>
+    <p class="hero-sub">
+      Green Light conecta os estudantes com empreendedorismo e práticas sustentáveis, transformando ideias em oportunidades.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#feira" class="btn btn-primary">Saiba mais</a>
+      <a href="#catalogo" class="btn btn-ghost">Ver catálogo</a>
+    </div>
+  </div>
+</section>
+
+<!-- main -->
+<main class="container" role="main">
+
+  <!-- sobre -->
+  <section id="sobre" class="section">
+    <div class="split">
+      <div>
+        <div class="about">
+          <h2>Sobre o Green Light</h2>
+          <p>
+            O <strong>Green Light</strong> é uma iniciativa do Sebrae com alunos do Segundo Médio (Adm, Info A e B) que incentiva o cuidado com o meio ambiente e o empreendedorismo sustentável através das plantas.
+            Promovemos oficinas, feiras e pequenos negócios que aproximam jovens da prática empreendedora e da consciência ecológica.
+          </p>
+          <p>
+            Nosso objetivo é mostrar como a natureza pode transformar o dia a dia, gerando novas oportunidades de renda, aprendizagem prática e conexão comunitária.
+          </p>
+          <div style="margin-top:16px">
+            <a class="btn btn-primary" href="#catalogo">Ver galeria</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(6,38,18,0.06)">
+          <img src="https://i.imgur.com/UIkCwR7.jpeg" alt="plantas destaque" style="width:100%;height:100%;max-height:420px;object-fit:cover;display:block">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- projetos -->
+<section id="catalogo" class="section" aria-labelledby="catalogoTitle">
+  <h2 id="catalogoTitle" style="text-align:center;color:var(--green-700);margin-bottom:24px">
+    Nosso Catálogo 
+  <div class="catalogo-grid">
+    <div class="card">
+      <img src="https://i.imgur.com/mgo7kje.jpeg" alt="planta 1">
+    
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/3QbdmZm.jpeg" alt="planta 2">
+
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/XrLxPqX.jpeg" alt="planta 3">
+
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/cUChIcV.jpeg" alt="planta 4">
+     
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/cLZQK36.jpeg" alt="planta 5">
+     
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/HBltxUD.jpeg" alt="planta 6">
+   
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/XrhPB8L.jpeg" alt="planta 7">
+    
+    </div>
+    <div class="card">
+      <img src="https://i.imgur.com/gMcYcJa.jpeg" alt="planta 8">
+   
+    </div>
+  </div>
+</section>
+
+<style>
+    
+  .catalogo-grid .card {
+    background: var(--green-100);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .catalogo-grid .card:hover {
+    transform: translateY(-5px);
+  }
+  .catalogo-grid .card img {
+    width: 100%;
+    height: 180px;       /* todas iguais */
+    object-fit: cover;   
+    display: block;
+  }
+</style>
+
+<style>
+  .catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .catalogo-grid .card {
+    background: var(--green-100);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(6,38,18,0.08);
+    transition: transform .2s ease;
+    text-align: center;
+  }
+  .catalogo-grid .card:hover {
+    transform: translateY(-5px);
+  }
+  .catalogo-grid .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .catalogo-grid .card-body {
+    padding: 12px;
+  }
+  .catalogo-grid .card-body h3 {
+    margin: 0;
+    color: var(--green-700);
+    font-size: 16px;
+  }
+</style>
+
+
+  <!-- informacao -->
+  <section id="feira" class="section" style="padding-top:36px;padding-bottom:36px">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start">
+      <div>
+        <h2 style="color:var(--green-700);margin-top:0"> Sebrae — Green Light</h2>
+        <p style="max-width:760px;color:#163d1b">
+          Participe da nossa feira e descubra como o Green Light está transformando ideias em negócios sustentáveis.
+          Teremos estandes com plantas e rifas valendo Terráriose entre outros! 
+      </div>
+
+      <aside class="feira-card" aria-labelledby="feiraTitle">
+        <h3 id="feiraTitle">Venha nos visitar!</h3>
+        <div style="margin:10px 0 18px">Terrários, Suculentas, Rifas, Cactos e muito mais.</div>
+        <div class="feira-meta">
+          <div class="pill">Horário: 8h — 13h</div>   
+    </div>
+  </section>
+
+  <!-- lugar -->
+
+  <section id="feira" class="section" style="padding-top:36px;padding-bottom:36px">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start">
+      <div>
+        <div style="display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start"></div>
+          <h3 style="margin-top:0;color:var(--green-700)">Nosso endereço</h3>
+            <p style="color:#163d1b"><strong>Data:</strong> 27 de Setembro de 2025</p>
+            <p style="color:#163d1b"><strong>Local:</strong> R. Folha de Hera, 11 - Parque Guarani, São Paulo - SP, 08235-660</p>
+      </div>
+
+        </div>
+
+        <div style="margin-top:12px">
+          <small style="color:#3b6639">Siga-nos: @green.light_2025</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
